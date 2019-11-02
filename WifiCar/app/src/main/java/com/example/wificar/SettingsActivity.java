@@ -33,6 +33,32 @@ public class SettingsActivity extends AppCompatActivity {
         
         getViews();
         registerListener();
+        getAllData();
+    }
+
+    /**
+     * @Description 填充所有数据
+     * @Auther 孙建旺
+     * @Date 下午 5:28 2019/11/02
+     * @Param []
+     * @return void
+     */
+    private void getAllData() {
+        GO_AHEAD.setText(SendUitl.OxToString(SendUitl.GO_AHEAD));
+        GO_BACK.setText(SendUitl.OxToString(SendUitl.GO_BACK));
+        TURN_LEFT.setText(SendUitl.OxToString(SendUitl.TURN_LEFT));
+        TURN_RIGHT.setText(SendUitl.OxToString(SendUitl.TURN_RIGHT));
+        TURN_LEFT_FORWARD.setText(SendUitl.OxToString(SendUitl.TURN_LEFT_FORWARD));
+        TURN_RIGHT_FORWARD.setText(SendUitl.OxToString(SendUitl.TURN_RIGHT_FORWARD));
+        TURN_LEFT_BACK.setText(SendUitl.OxToString(SendUitl.TURN_LEFT_BACK));
+        TURN_RIGHT_BACK.setText(SendUitl.OxToString(SendUitl.TURN_RIGHT_BACK));
+        LEFT_ROTATION.setText(SendUitl.OxToString(SendUitl.LEFT_ROTATION));
+        RIGHT_ROTATION.setText(SendUitl.OxToString(SendUitl.RIGHT_ROTATION));
+        STOP.setText(SendUitl.OxToString(SendUitl.STOP));
+        CONTROLLER_PORT.setText(SendUitl.PORT+"");
+        IP.setText(SendUitl.IP);
+        MEDIA_ADDRESS.setText(SendUitl.VIDEO_PATH);
+        MEDIA_ADDRESS2.setText(SendUitl.VIDEO_PATH);
     }
 
     /**
@@ -80,6 +106,8 @@ public class SettingsActivity extends AppCompatActivity {
         STOP = findViewById(R.id.STOP);
         MEDIA_ADDRESS = findViewById(R.id.MEDIAADDRESS);
         MEDIA_ADDRESS2 = findViewById(R.id.MEDIAADDRESS2);
+        CONTROLLER_PORT = findViewById(R.id.CONTROLLER_PORT);
+        IP = findViewById(R.id.IP);
     }
 
     /**

@@ -69,6 +69,7 @@ public class SendUitl {
         }
     };
 
+
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
      *
@@ -336,7 +337,7 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    private byte[] StringToOx(String str) {
+    public static byte[] StringToOx(String str) {
         byte[] data = new BigInteger(str, 16).toByteArray();
         return data;
     }
@@ -349,7 +350,7 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    private String OxToString(byte[] data) {
+    public static String OxToString(byte[] data) {
         String result = "";
         for (int i = 0; i < data.length; i++) {
             if (Integer.toHexString(data[i]).length() == 1) {
@@ -358,7 +359,7 @@ public class SendUitl {
                 result += Integer.toHexString(data[i] & 0XFF);
             }
         }
-        return result;
+        return result.toUpperCase();
     }
 
 }
