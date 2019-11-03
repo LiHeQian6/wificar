@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ControllerActivity">
+    tools:context=".ControllerActivity"
+    android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/BTN_GO_AHEAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="前进"
+        android:background="@drawable/button">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="后退"
+        android:id="@+id/BTN_GO_BACK"
+        android:background="@drawable/button">
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止"
+        android:id="@+id/BTN_STOP"
+        android:background="@drawable/button">
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="向左"
+        android:id="@+id/BTN_TURN_LEFT"
+        android:background="@drawable/button">
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="向右"
+        android:id="@+id/BTN_TURN_RIGHT"
+        android:background="@drawable/button">
+
+    </Button>
+</LinearLayout>

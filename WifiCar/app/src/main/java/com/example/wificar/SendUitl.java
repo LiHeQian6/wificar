@@ -64,7 +64,9 @@ public class SendUitl {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(context, "连接成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "连接成功!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(context, "连接失败，请重试!", Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -231,17 +233,19 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    public void sendInstruction(byte[] instruction) {
-        try {
-            if (outputStream != null) {
-                outputStream.write(instruction);
-            } else {
-                Toast.makeText(context, "链接已断开，请重新连接", Toast.LENGTH_SHORT).show();
+    public void sendInstruction(final byte[] instruction) {
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    if (outputStream != null) {
+                        outputStream.write(instruction);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        }.start();
     }
 
     /**
