@@ -1,6 +1,7 @@
 package com.example.wificar;
 
 import android.os.Bundle;
+import android.print.PrinterId;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -15,6 +16,12 @@ public class ControllerActivity extends AppCompatActivity {
     private Button BTN_TURN_LEFT;
     private Button BTN_TURN_RIGHT;
     private Button BTN_STOP;
+    private Button BTN_TURN_LEFT_FORWARD;
+    private Button BTN_TURN_LEFT_BACK;
+    private Button BTN_TURN_RIGHT_FORWARD;
+    private Button BTN_TURN_RIGHT_BACK;
+    private Button BTN_LEFT_ROTATION;
+    private Button BTN_RIGHT_ROTATION;
     private CustomOnclickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,12 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_STOP.setOnClickListener(listener);
         BTN_TURN_LEFT.setOnClickListener(listener);
         BTN_TURN_RIGHT.setOnClickListener(listener);
+        BTN_TURN_LEFT_FORWARD.setOnClickListener(listener);
+        BTN_TURN_LEFT_BACK.setOnClickListener(listener);
+        BTN_TURN_RIGHT_FORWARD.setOnClickListener(listener);
+        BTN_TURN_RIGHT_BACK.setOnClickListener(listener);
+        BTN_LEFT_ROTATION.setOnClickListener(listener);
+        BTN_RIGHT_ROTATION.setOnClickListener(listener);
     }
 
     /**
@@ -54,6 +67,12 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_TURN_LEFT = findViewById(R.id.BTN_TURN_LEFT);
         BTN_TURN_RIGHT = findViewById(R.id.BTN_TURN_RIGHT);
         BTN_STOP = findViewById(R.id.BTN_STOP);
+        BTN_TURN_RIGHT_BACK = findViewById(R.id.BTN_TURN_RIGHT_BACK);
+        BTN_TURN_RIGHT_FORWARD = findViewById(R.id.BTN_TURN_RIGHT_FORWARD);
+        BTN_TURN_LEFT_BACK = findViewById(R.id.BTN_TURN_LEFT_BACK);
+        BTN_TURN_LEFT_FORWARD = findViewById(R.id.BTN_TURN_LEFT_FORWARD);
+        BTN_RIGHT_ROTATION = findViewById(R.id.BTN_RIGHT_ROTATION);
+        BTN_LEFT_ROTATION = findViewById(R.id.BTN_LEFT_ROTATION);
     }
 
     class CustomOnclickListener implements View.OnClickListener{
@@ -75,6 +94,24 @@ public class ControllerActivity extends AppCompatActivity {
                     break;
                 case R.id.BTN_TURN_RIGHT:
                     sendUitl.sendInstruction(SendUitl.TURN_RIGHT);
+                    break;
+                case R.id.BTN_TURN_LEFT_BACK:
+                    sendUitl.sendInstruction(SendUitl.TURN_LEFT_BACK);
+                    break;
+                case R.id.BTN_TURN_LEFT_FORWARD:
+                    sendUitl.sendInstruction(SendUitl.TURN_LEFT_FORWARD);
+                    break;
+                case R.id.BTN_TURN_RIGHT_BACK:
+                    sendUitl.sendInstruction(SendUitl.TURN_RIGHT_BACK);
+                    break;
+                case R.id.BTN_TURN_RIGHT_FORWARD:
+                    sendUitl.sendInstruction(SendUitl.TURN_RIGHT_FORWARD);
+                    break;
+                case R.id.BTN_RIGHT_ROTATION:
+                    sendUitl.sendInstruction(SendUitl.RIGHT_ROTATION);
+                    break;
+                case R.id.BTN_LEFT_ROTATION:
+                    sendUitl.sendInstruction(SendUitl.LEFT_ROTATION);
                     break;
             }
         }

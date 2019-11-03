@@ -1,6 +1,7 @@
 package com.example.wificar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -24,13 +25,14 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText IP;    //控制IP
     private EditText MEDIA_ADDRESS;     //视频地址1
     private EditText MEDIA_ADDRESS2;    //视频地址2
-    private CustomerOnclickListener onclickListener;
+    private CustomerFocusChangeListener changeListener;
+    private SendUitl sendUitl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        
+
         getViews();
         registerListener();
         getAllData();
@@ -69,20 +71,20 @@ public class SettingsActivity extends AppCompatActivity {
      * @return void
      */
     private void registerListener() {
-        onclickListener = new CustomerOnclickListener();
-        GO_AHEAD.setOnClickListener(onclickListener);
-        GO_BACK.setOnClickListener(onclickListener);
-        TURN_LEFT.setOnClickListener(onclickListener);
-        TURN_RIGHT.setOnClickListener(onclickListener);
-        TURN_LEFT_FORWARD.setOnClickListener(onclickListener);
-        TURN_LEFT_BACK.setOnClickListener(onclickListener);
-        TURN_RIGHT_FORWARD.setOnClickListener(onclickListener);
-        TURN_RIGHT_BACK.setOnClickListener(onclickListener);
-        RIGHT_ROTATION.setOnClickListener(onclickListener);
-        LEFT_ROTATION.setOnClickListener(onclickListener);
-        STOP.setOnClickListener(onclickListener);
-        MEDIA_ADDRESS.setOnClickListener(onclickListener);
-        MEDIA_ADDRESS2.setOnClickListener(onclickListener);
+        changeListener = new CustomerFocusChangeListener();
+        GO_AHEAD.setOnFocusChangeListener(changeListener);
+        GO_BACK.setOnFocusChangeListener(changeListener);
+        TURN_LEFT.setOnFocusChangeListener(changeListener);
+        TURN_RIGHT.setOnFocusChangeListener(changeListener);
+        TURN_LEFT_FORWARD.setOnFocusChangeListener(changeListener);
+        TURN_LEFT_BACK.setOnFocusChangeListener(changeListener);
+        TURN_RIGHT_FORWARD.setOnFocusChangeListener(changeListener);
+        TURN_RIGHT_BACK.setOnFocusChangeListener(changeListener);
+        RIGHT_ROTATION.setOnFocusChangeListener(changeListener);
+        LEFT_ROTATION.setOnFocusChangeListener(changeListener);
+        STOP.setOnFocusChangeListener(changeListener);
+        MEDIA_ADDRESS.setOnFocusChangeListener(changeListener);
+        MEDIA_ADDRESS2.setOnFocusChangeListener(changeListener);
     }
 
     /**
@@ -117,16 +119,20 @@ public class SettingsActivity extends AppCompatActivity {
      * @Param
      * @return
      */
-    class CustomerOnclickListener implements View.OnClickListener{
-
+    class CustomerFocusChangeListener implements View.OnFocusChangeListener{
         @Override
-        public void onClick(View v) {
-            switch (v.getId()){
+        public void onFocusChange(View v, boolean hasFocus) {
+            switch (v.getId()) {
                 case R.id.GO_AHEAD:
-
+                    if(!hasFocus) {
+                        String GoHeadStr = GO_AHEAD.getText().toString().trim();
+                        Log.e("abc", GoHeadStr);
+                        SendUitl.setGoAhead(GoHeadStr);
+                    }
                     break;
                 case R.id.GO_BACK:
-
+                    String GoBackStr = GO_BACK.getText().toString().trim();
+                    sendUitl.setGoBack(GoBackStr);
                     break;
                 case R.id.TURN_LEFT:
 

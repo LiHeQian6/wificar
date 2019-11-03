@@ -46,8 +46,9 @@ public class SendUitl {
     public static int PORT = 2001;
     //默认视频地址
     public static String VIDEO_PATH = "http://192.168.1.1:8080/?actio=snapshot";
+    private static SharedPreferences car;
     //本地存储文件
-    private SharedPreferences car;
+    //private SharedPreferences car;
     //环境上下文
     private Context context;
     //链接对象
@@ -70,7 +71,6 @@ public class SendUitl {
             }
         }
     };
-
 
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
@@ -126,8 +126,6 @@ public class SendUitl {
         if (!car.getString("VIDEO_PATH", "").equals("")) {
             VIDEO_PATH = car.getString("VIDEO_PATH", "");
         }
-
-
         //如果不存在连接对象则进行连接，否则不重新连接
         if (client == null) {
             new Thread() {
@@ -263,14 +261,14 @@ public class SendUitl {
         edit.commit();
     }
 
-    public void setGoAhead(String goAhead) {
+    public static void setGoAhead(String goAhead) {
         SendUitl.GO_AHEAD = StringToOx(goAhead);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("GO_AHEAD", goAhead);
         edit.commit();
     }
 
-    public void setGoBack(String goBack) {
+    public static void setGoBack(String goBack) {
         SendUitl.GO_BACK = StringToOx(goBack);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("GO_BACK", goBack);
