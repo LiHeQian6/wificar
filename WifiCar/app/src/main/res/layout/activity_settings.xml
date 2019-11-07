@@ -385,6 +385,25 @@
                 </EditText>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="取消">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保存"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

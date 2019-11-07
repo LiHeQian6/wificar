@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 
@@ -72,6 +73,8 @@ public class SendUitl {
         }
     };
 
+    public SendUitl() {
+    }
 
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
@@ -83,6 +86,33 @@ public class SendUitl {
      */
     public SendUitl(Context context) {
         this.context = context;
+        //如果不存在连接对象则进行连接，否则不重新连接
+        InitInstruction(context);
+        if (client == null) {
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        client = new Socket(IP, PORT);
+                        Message msg = new Message();
+                        msg.obj = "true";
+                        handler.sendMessage(msg);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }.start();
+        }
+    }
+
+    /**
+     * @Description 初始化指令
+     * @Auther 孙建旺
+     * @Date 下午 6:37 2019/11/07
+     * @Param [context]
+     * @return void
+     */
+    public void InitInstruction(Context context){
         //获取本地存储的用户自定义指令和设置,如果有则替换默认指令和设置
         car = context.getSharedPreferences("Car", 0);
         if (!car.getString("STOP", "").equals("")) {
@@ -127,8 +157,6 @@ public class SendUitl {
         if (!car.getString("VIDEO_PATH", "").equals("")) {
             VIDEO_PATH = car.getString("VIDEO_PATH", "");
         }
-
-
         //如果不存在连接对象则进行连接，否则不重新连接
         if (client == null) {
             new Thread() {
@@ -167,7 +195,7 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    public void setIP(String IP) {
+    public static void setIP(String IP) {
         SendUitl.IP = IP;
         SharedPreferences.Editor edit = car.edit();
         edit.putString("IP", IP);
@@ -194,7 +222,7 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    public void setPORT(int PORT) {
+    public static void setPORT(int PORT) {
         SendUitl.PORT = PORT;
         SharedPreferences.Editor edit = car.edit();
         edit.putInt("PORT", PORT);
@@ -219,7 +247,7 @@ public class SendUitl {
      * @param videoPath
      * @return void
      */
-    public void setVideoPath(String videoPath) {
+    public static void setVideoPath(String videoPath) {
         VIDEO_PATH = videoPath;
         SharedPreferences.Editor edit = car.edit();
         edit.putString("VIDEO_PATH", videoPath);
@@ -257,7 +285,7 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    public void setSTOP(String STOP) {
+    public static void setSTOP(String STOP) {
         SendUitl.STOP = StringToOx(STOP);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("STOP", STOP);
@@ -266,6 +294,7 @@ public class SendUitl {
 
     public static void setGoAhead(String goAhead) {
         SendUitl.GO_AHEAD = StringToOx(goAhead);
+        Log.i("111",OxToString(SendUitl.GO_AHEAD));
         SharedPreferences.Editor edit = car.edit();
         edit.putString("GO_AHEAD", goAhead);
         edit.commit();
@@ -278,56 +307,56 @@ public class SendUitl {
         edit.commit();
     }
 
-    public void setTurnLeft(String turnLeft) {
+    public static void setTurnLeft(String turnLeft) {
         SendUitl.TURN_LEFT = StringToOx(turnLeft);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_LEFT", turnLeft);
         edit.commit();
     }
 
-    public void setTurnRight(String turnRight) {
+    public static void setTurnRight(String turnRight) {
         SendUitl.TURN_RIGHT = StringToOx(turnRight);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_RIGHT", turnRight);
         edit.commit();
     }
 
-    public void setTurnLeftForward(String turnLeftForward) {
+    public static void setTurnLeftForward(String turnLeftForward) {
         SendUitl.TURN_LEFT_FORWARD = StringToOx(turnLeftForward);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_LEFT_FORWARD", turnLeftForward);
         edit.commit();
     }
 
-    public void setTurnLeftBack(String turnLeftBack) {
+    public static void setTurnLeftBack(String turnLeftBack) {
         SendUitl.TURN_LEFT_BACK = StringToOx(turnLeftBack);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_LEFT_BACK", turnLeftBack);
         edit.commit();
     }
 
-    public void setTurnRightForward(String turnRightForward) {
+    public static void setTurnRightForward(String turnRightForward) {
         SendUitl.TURN_RIGHT_FORWARD = StringToOx(turnRightForward);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_RIGHT_FORWARD", turnRightForward);
         edit.commit();
     }
 
-    public void setTurnRightBack(String turnRightBack) {
+    public static void setTurnRightBack(String turnRightBack) {
         SendUitl.TURN_RIGHT_BACK = StringToOx(turnRightBack);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("TURN_RIGHT_BACK", turnRightBack);
         edit.commit();
     }
 
-    public void setLeftRotation(String leftRotation) {
+    public static void setLeftRotation(String leftRotation) {
         SendUitl.LEFT_ROTATION = StringToOx(leftRotation);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("LEFT_ROTATION", leftRotation);
         edit.commit();
     }
 
-    public void setRightRotation(String rightRotation) {
+    public static void setRightRotation(String rightRotation) {
         SendUitl.GO_AHEAD = StringToOx(rightRotation);
         SharedPreferences.Editor edit = car.edit();
         edit.putString("RIGHT_ROTATION", rightRotation);
@@ -343,7 +372,12 @@ public class SendUitl {
      * @date 2019/11/1
      */
     public static byte[] StringToOx(String str) {
-        byte[] data = new BigInteger(str, 16).toByteArray();
+        int len = str.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(str.charAt(i), 16) << 4)
+                                 + Character.digit(str.charAt(i+1), 16));
+        }
         return data;
     }
 

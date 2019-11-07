@@ -1,10 +1,15 @@
 package com.example.wificar;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,14 +30,34 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText IP;    //控制IP
     private EditText MEDIA_ADDRESS;     //视频地址1
     private EditText MEDIA_ADDRESS2;    //视频地址2
-    private CustomerFocusChangeListener changeListener;
+    private CustomerOnclickListener onclickListener;
+    private Button cancel;
+    private Button save;
     private SendUitl sendUitl;
+//    private String go_ahead;
+//    private String go_back;
+//    private String turn_left;
+//    private String turn_right;
+//    private String turn_left_forward;
+//    private String turn_right_forward;
+//    private String turn_left_back;
+//    private String turn_right_back;
+//    private String left_rotation;
+//    private String right_rotation;
+//    private String stop;
+//    private String controller_port;
+//    private String ip;
+//    private String media_address;
+//    private String media_address2;
+    private SharedPreferences car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        sendUitl = new SendUitl(this);
+        car = getSharedPreferences("Car", 0);
         getViews();
         registerListener();
         getAllData();
@@ -71,20 +96,9 @@ public class SettingsActivity extends AppCompatActivity {
      * @return void
      */
     private void registerListener() {
-        changeListener = new CustomerFocusChangeListener();
-        GO_AHEAD.setOnFocusChangeListener(changeListener);
-        GO_BACK.setOnFocusChangeListener(changeListener);
-        TURN_LEFT.setOnFocusChangeListener(changeListener);
-        TURN_RIGHT.setOnFocusChangeListener(changeListener);
-        TURN_LEFT_FORWARD.setOnFocusChangeListener(changeListener);
-        TURN_LEFT_BACK.setOnFocusChangeListener(changeListener);
-        TURN_RIGHT_FORWARD.setOnFocusChangeListener(changeListener);
-        TURN_RIGHT_BACK.setOnFocusChangeListener(changeListener);
-        RIGHT_ROTATION.setOnFocusChangeListener(changeListener);
-        LEFT_ROTATION.setOnFocusChangeListener(changeListener);
-        STOP.setOnFocusChangeListener(changeListener);
-        MEDIA_ADDRESS.setOnFocusChangeListener(changeListener);
-        MEDIA_ADDRESS2.setOnFocusChangeListener(changeListener);
+        onclickListener = new CustomerOnclickListener();
+        save.setOnClickListener(onclickListener);
+        cancel.setOnClickListener(onclickListener);
     }
 
     /**
@@ -110,6 +124,8 @@ public class SettingsActivity extends AppCompatActivity {
         MEDIA_ADDRESS2 = findViewById(R.id.MEDIAADDRESS2);
         CONTROLLER_PORT = findViewById(R.id.CONTROLLER_PORT);
         IP = findViewById(R.id.IP);
+        cancel = findViewById(R.id.btnCancel);
+        save = findViewById(R.id.btnSave);
     }
 
     /**
@@ -119,53 +135,31 @@ public class SettingsActivity extends AppCompatActivity {
      * @Param
      * @return
      */
-    class CustomerFocusChangeListener implements View.OnFocusChangeListener{
+    class CustomerOnclickListener implements View.OnClickListener{
+
         @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            switch (v.getId()) {
-                case R.id.GO_AHEAD:
-                    if(!hasFocus) {
-                        String GoHeadStr = GO_AHEAD.getText().toString().trim();
-                        Log.e("abc", GoHeadStr);
-                        SendUitl.setGoAhead(GoHeadStr);
-                    }
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.btnCancel:
+                    finish();
                     break;
-                case R.id.GO_BACK:
-                    String GoBackStr = GO_BACK.getText().toString().trim();
-                    sendUitl.setGoBack(GoBackStr);
-                    break;
-                case R.id.TURN_LEFT:
-
-                    break;
-                case R.id.TURN_RIGHT:
-
-                    break;
-                case R.id.TURN_LEFT_FORWARD:
-
-                    break;
-                case R.id.TURN_LEFT_BACK:
-
-                    break;
-                case R.id.TURN_RIGHT_FORWARD:
-
-                    break;
-                case R.id.TURN_RIGHT_BACK:
-
-                    break;
-                case R.id.RIGHT_ROTATION:
-
-                    break;
-                case R.id.LEFT_ROTATION:
-
-                    break;
-                case R.id.STOP:
-
-                    break;
-                case R.id.MEDIAADDRESS:
-
-                    break;
-                case R.id.MEDIAADDRESS2:
-
+                case R.id.btnSave:
+                    SendUitl.setGoAhead(GO_AHEAD.getText().toString().trim());
+                    SendUitl.setGoBack(GO_BACK.getText().toString().trim());
+                    SendUitl.setTurnLeft(TURN_LEFT.getText().toString().trim());
+                    SendUitl.setTurnRight(TURN_RIGHT.getText().toString().trim());
+                    SendUitl.setTurnLeftForward(TURN_LEFT_FORWARD.getText().toString().trim());
+                    SendUitl.setTurnRightForward(TURN_RIGHT_FORWARD.getText().toString().trim());
+                    SendUitl.setTurnLeftBack(TURN_LEFT_BACK.getText().toString().trim());
+                    SendUitl.setTurnRightBack(TURN_RIGHT_BACK.getText().toString().trim());
+                    SendUitl.setLeftRotation(LEFT_ROTATION.getText().toString().trim());
+                    SendUitl.setRightRotation(RIGHT_ROTATION.getText().toString().trim());
+                    SendUitl.setIP(IP.getText().toString().trim());
+                    SendUitl.setPORT(Integer.parseInt(CONTROLLER_PORT.getText().toString().trim()));
+                    SendUitl.setVideoPath(MEDIA_ADDRESS.getText().toString().trim());
+                    SendUitl.setSTOP(STOP.getText().toString().trim());
+                    Toast toast = Toast.makeText(SettingsActivity.this,"保存成功！",Toast.LENGTH_SHORT);
+                    toast.show();
                     break;
             }
         }
