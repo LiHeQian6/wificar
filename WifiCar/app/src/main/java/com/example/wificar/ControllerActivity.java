@@ -23,10 +23,14 @@ public class ControllerActivity extends AppCompatActivity {
     private Button BTN_LEFT_ROTATION;
     private Button BTN_RIGHT_ROTATION;
     private CustomOnclickListener listener;
+    private WebView video;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
+        video=findViewById(R.id.video);
+        video.loadUrl(SendUitl.VIDEO_PATH);
         sendUitl = new SendUitl(ControllerActivity.this);
         getViews();
         registerListner();

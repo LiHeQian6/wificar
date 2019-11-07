@@ -45,7 +45,7 @@ public class SendUitl {
     //默认端口
     public static int PORT = 2001;
     //默认视频地址
-    public static String VIDEO_PATH = "http://192.168.1.1:8080/?actio=snapshot";
+    public static String VIDEO_PATH = "http://192.168.1.1:8080/?action=stream";
     private static SharedPreferences car;
     //本地存储文件
     //private SharedPreferences car;
@@ -71,6 +71,7 @@ public class SendUitl {
             }
         }
     };
+
 
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
@@ -126,6 +127,8 @@ public class SendUitl {
         if (!car.getString("VIDEO_PATH", "").equals("")) {
             VIDEO_PATH = car.getString("VIDEO_PATH", "");
         }
+
+
         //如果不存在连接对象则进行连接，否则不重新连接
         if (client == null) {
             new Thread() {
