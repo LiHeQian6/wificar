@@ -1,14 +1,25 @@
 package com.example.wificar;
-
+/*
+版权声明：
+河北师范大学职业技术学院电子信息教研室·智能运动与行为控制项目组版权所有
+您可以任意修改本程序，并应用于自行研发的智能小车机器人及其他电子产品上，但是禁止用于商业牟利。
+我们保留付诸法律起诉侵权的权利！2019-9-11
+BY 电子信息教研室·智能运动与行为控制项目组 V1.0版本
+*/
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.NumberPicker;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +50,14 @@ public class ControllerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_controller);
         video=findViewById(R.id.video);
         video.loadUrl(SendUitl.VIDEO_PATH);
+        video.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+                Toast.makeText(getApplicationContext(),"连接失败！",Toast.LENGTH_SHORT).show();
+                view.loadUrl("about:blank");
+            }
+        });
         sendUitl = new SendUitl(ControllerActivity.this);
         getViews();
         registerListner();

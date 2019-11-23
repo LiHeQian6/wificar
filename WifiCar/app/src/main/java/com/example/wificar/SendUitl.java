@@ -78,8 +78,6 @@ public class SendUitl {
                     e.printStackTrace();
                 }
                 Toast.makeText(context, "连接成功!", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(context, "连接失败，请重试!", Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -95,10 +93,10 @@ public class SendUitl {
      * @author li
      * @date 2019/11/1
      */
-    public SendUitl(Context context) {
+    public SendUitl(final Context context) {
         this.context = context;
-        //如果不存在连接对象则进行连接，否则不重新连接
         InitInstruction(context);
+        //如果不存在连接对象则进行连接，否则不重新连接
         if (client == null) {
             new Thread() {
                 @Override

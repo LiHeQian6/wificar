@@ -1,5 +1,11 @@
 package com.example.wificar;
-
+/*
+版权声明：
+河北师范大学职业技术学院电子信息教研室·智能运动与行为控制项目组版权所有
+您可以任意修改本程序，并应用于自行研发的智能小车机器人及其他电子产品上，但是禁止用于商业牟利。
+我们保留付诸法律起诉侵权的权利！2019-9-11
+BY 电子信息教研室·智能运动与行为控制项目组 V1.0版本
+*/
 import android.os.Build;
 import android.view.WindowManager;
 import android.webkit.WebView;
