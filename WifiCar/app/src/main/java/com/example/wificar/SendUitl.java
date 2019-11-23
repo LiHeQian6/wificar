@@ -50,7 +50,8 @@ public class SendUitl {
     public static byte[] PATROL_TRACKING_MODE = new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x02, (byte) 0x00, (byte) 0xFF};
     public static byte[] INFRARED_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     public static byte[] ULTRASONIC_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x04, (byte) 0x00, (byte) 0xFF};
-    public static byte[] SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
+    public static byte[] LEFT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
+    public static byte[] RIGHT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     //默认IP
     public static String IP = "192.168.1.1";
     //默认端口
@@ -82,6 +83,9 @@ public class SendUitl {
             }
         }
     };
+
+    public SendUitl() {
+    }
 
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
@@ -163,22 +167,6 @@ public class SendUitl {
         }
         if (!car.getString("VIDEO_PATH", "").equals("")) {
             VIDEO_PATH = car.getString("VIDEO_PATH", "");
-        }
-        //如果不存在连接对象则进行连接，否则不重新连接
-        if (client == null) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        client = new Socket(IP, PORT);
-                        Message msg = new Message();
-                        msg.obj = "true";
-                        handler.sendMessage(msg);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }.start();
         }
     }
 
@@ -369,11 +357,23 @@ public class SendUitl {
         edit.putString("RIGHT_ROTATION", rightRotation);
         edit.commit();
     }
-    public static void setSpeedGear(int speedGear) {
+    public static void setLeftSpeedGear(int speedGear) {
         String sg= Integer.toHexString(speedGear);
-        String s=OxToString(SPEED_GEAR);
-        SPEED_GEAR =StringToOx(s.substring(0,6)+sg+s.substring(8));
+        String s=OxToString(LEFT_SPEED_GEAR);
+        if(sg.length()==1){
+            sg = "0"+sg;
+        }
+        LEFT_SPEED_GEAR =StringToOx(s.substring(0,6)+sg+s.substring(8));
     }
+    public static void setRightSpeedGear(int speedGear){
+        String sg= Integer.toHexString(speedGear);
+        String s=OxToString(RIGHT_SPEED_GEAR);
+        if(sg.length()==1){
+            sg = "0"+sg;
+        }
+        RIGHT_SPEED_GEAR =StringToOx(s.substring(0,6)+sg+s.substring(8));
+    }
+
 
 
     /**

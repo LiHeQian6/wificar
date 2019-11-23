@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,8 @@ public class ControllerActivity extends AppCompatActivity {
     private CustomOnclickListener listener;
     private CustomerOntouchListener ontouchListener;
     private WebView video;
+    private NumberPicker numberPicker;
+    private NumberPicker rightNumberPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class ControllerActivity extends AppCompatActivity {
         getViews();
         registerListner();
         setStatusBar();
+        SetNumberPicker();
     }
 
     /**
@@ -89,6 +93,36 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_TURN_LEFT_FORWARD = findViewById(R.id.BTN_TURN_LEFT_FORWARD);
         BTN_RIGHT_ROTATION = findViewById(R.id.BTN_RIGHT_ROTATION);
         BTN_LEFT_ROTATION = findViewById(R.id.BTN_LEFT_ROTATION);
+        numberPicker = findViewById(R.id.LeftSpeedControl);
+        rightNumberPicker = findViewById(R.id.RightSpeedControl);
+    }
+
+    /**
+     * @Description 设置NumberPicker及发送指令
+     * @Auther 孙建旺
+     * @Date 下午 7:55 2019/11/23
+     * @Param []
+     * @return void
+     */
+    private void SetNumberPicker(){
+        numberPicker.setMaxValue(10);
+        numberPicker.setMinValue(0);
+        rightNumberPicker.setMaxValue(10);
+        rightNumberPicker.setMinValue(0);
+        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                SendUitl.setLeftSpeedGear(newVal);
+                sendUitl.sendInstruction(SendUitl.LEFT_SPEED_GEAR);
+            }
+        });
+        rightNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                SendUitl.setRightSpeedGear(newVal);
+                sendUitl.sendInstruction(SendUitl.RIGHT_SPEED_GEAR);
+            }
+        });
     }
 
     /**

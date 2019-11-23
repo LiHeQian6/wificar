@@ -32,12 +32,15 @@ public class SettingsActivity extends AppCompatActivity {
     private Button cancel;
     private Button save;
     private SharedPreferences car;
+    private SendUitl sendUitl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         car = getSharedPreferences("Car", 0);
+        sendUitl = new SendUitl();
+        sendUitl.InitInstruction(this);
         getViews();
         registerListener();
         getAllData();

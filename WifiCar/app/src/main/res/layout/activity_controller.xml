@@ -13,6 +13,49 @@
                       android:layout_height="match_parent">
             <RelativeLayout android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/NumberPickerBox">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="左"
+                            android:textColor="@color/colorPrimaryDark">
+                        </TextView>
+
+                        <TextView
+                            android:layout_marginLeft="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="右"
+                            android:textColor="@color/colorPrimaryDark"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/NumberPickerBox">
+
+                        <NumberPicker
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/LeftSpeedControl"/>
+
+                        <NumberPicker
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/RightSpeedControl"/>
+                    </LinearLayout>
+                </LinearLayout>
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:orientation="vertical"
