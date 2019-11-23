@@ -41,6 +41,16 @@ public class SendUitl {
     public static byte[] TURN_RIGHT_BACK = new byte[]{(byte) 0xFF, (byte) 0x00, (byte) 0x08, (byte) 0x00, (byte) 0xFF};
     public static byte[] LEFT_ROTATION = new byte[]{(byte) 0xFF, (byte) 0x00, (byte) 0x09, (byte) 0x00, (byte) 0xFF};
     public static byte[] RIGHT_ROTATION = new byte[]{(byte) 0xFF, (byte) 0x00, (byte) 0x10, (byte) 0x00, (byte) 0xFF};
+    public static byte[] OPEN_LIGHT = new byte[]{(byte) 0xFF, (byte) 0x04, (byte) 0x00, (byte) 0x00, (byte) 0xFF};
+    public static byte[] CLOSE_LIGHT = new byte[]{(byte) 0xFF, (byte) 0x04, (byte) 0x01, (byte) 0x00, (byte) 0xFF};
+    public static byte[] WHISTLE = new byte[]{(byte) 0xFF, (byte) 0x04, (byte) 0x02, (byte) 0x00, (byte) 0xFF};
+    public static byte[] LOCK_THE_STEERING_ANGLE = new byte[]{(byte) 0xFF, (byte) 0x32, (byte) 0x00, (byte) 0x00, (byte) 0xFF};
+    public static byte[] INITIALIZE_THE_STEERING_ANGLE= new byte[]{(byte) 0xFF, (byte) 0x33, (byte) 0x00, (byte) 0x00, (byte) 0xFF};
+    public static byte[] AUTOMATIC_FOLLOW_MASTER_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x01, (byte) 0x00, (byte) 0xFF};
+    public static byte[] PATROL_TRACKING_MODE = new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x02, (byte) 0x00, (byte) 0xFF};
+    public static byte[] INFRARED_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
+    public static byte[] ULTRASONIC_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x04, (byte) 0x00, (byte) 0xFF};
+    public static byte[] SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     //默认IP
     public static String IP = "192.168.1.1";
     //默认端口
@@ -72,9 +82,6 @@ public class SendUitl {
             }
         }
     };
-
-    public SendUitl() {
-    }
 
     /**
      * 功能描述 工具类构造方法，初始化工具类,需传环境上下文
@@ -362,6 +369,12 @@ public class SendUitl {
         edit.putString("RIGHT_ROTATION", rightRotation);
         edit.commit();
     }
+    public static void setSpeedGear(int speedGear) {
+        String sg= Integer.toHexString(speedGear);
+        String s=OxToString(SPEED_GEAR);
+        SPEED_GEAR =StringToOx(s.substring(0,6)+sg+s.substring(8));
+    }
+
 
     /**
      * 功能描述 十六进制字符串转换成十六进制字节数组
