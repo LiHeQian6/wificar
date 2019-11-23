@@ -3,12 +3,8 @@ package com.example.wificar;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,30 +31,12 @@ public class SettingsActivity extends AppCompatActivity {
     private CustomerOnclickListener onclickListener;
     private Button cancel;
     private Button save;
-    private SendUitl sendUitl;
-//    private String go_ahead;
-//    private String go_back;
-//    private String turn_left;
-//    private String turn_right;
-//    private String turn_left_forward;
-//    private String turn_right_forward;
-//    private String turn_left_back;
-//    private String turn_right_back;
-//    private String left_rotation;
-//    private String right_rotation;
-//    private String stop;
-//    private String controller_port;
-//    private String ip;
-//    private String media_address;
-//    private String media_address2;
     private SharedPreferences car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        sendUitl = new SendUitl(this);
         car = getSharedPreferences("Car", 0);
         getViews();
         registerListener();

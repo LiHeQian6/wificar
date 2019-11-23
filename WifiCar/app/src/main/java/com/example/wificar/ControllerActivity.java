@@ -3,15 +3,12 @@ package com.example.wificar;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.print.PrinterId;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import java.io.BufferedReader;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -94,6 +91,13 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_LEFT_ROTATION = findViewById(R.id.BTN_LEFT_ROTATION);
     }
 
+    /**
+     * @Description 图片触摸监听事件
+     * @Auther 孙建旺
+     * @Date 下午 4:21 2019/11/09
+     * @Param
+     * @return
+     */
     class CustomerOntouchListener implements View.OnTouchListener{
 
         @Override
