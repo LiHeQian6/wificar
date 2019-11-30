@@ -53,11 +53,11 @@ public class SendUitl {
     public static byte[] LEFT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     public static byte[] RIGHT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     //默认IP
-    public static String IP = "192.168.1.1";
+    public static String IP = "192.168.100.1";
     //默认端口
     public static int PORT = 2001;
     //默认视频地址
-    public static String VIDEO_PATH = "http://192.168.1.1:8080/?action=stream";
+    public static String VIDEO_PATH = "http://192.168.100.1:8080/?action=stream";
     private static SharedPreferences car;
     //本地存储文件
     //private SharedPreferences car;

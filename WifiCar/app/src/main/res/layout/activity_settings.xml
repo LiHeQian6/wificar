@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SettingsActivity">
+    tools:context=".SettingsActivity"
+    android:background="@drawable/back">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,20 +26,23 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:focusable="true"
                 android:focusableInTouchMode="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="前进">
+                    android:text="前进"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:id="@+id/GO_AHEAD"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
 
@@ -48,17 +52,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:baselineAligned="false">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="后退" />
+                    android:text="后退"
+                    android:textColor="@color/settingColor"/>
 
                 <EditText
                     android:id="@+id/GO_BACK"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></EditText>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor"></EditText>
 
 
             </LinearLayout>
@@ -72,19 +79,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="左转">
+                    android:text="左转"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:id="@+id/TURN_LEFT"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
 
@@ -94,17 +104,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="右转" />
+                    android:text="右转"
+                    android:textColor="@color/settingColor"/>
 
                 <EditText
                     android:id="@+id/TURN_RIGHT"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></EditText>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor"></EditText>
 
             </LinearLayout>
         </LinearLayout>
@@ -117,19 +130,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="左前">
+                    android:text="左前"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:id="@+id/TURN_LEFT_FORWARD"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
 
@@ -139,17 +155,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="右前" />
+                    android:text="右前"
+                    android:textColor="@color/settingColor"/>
 
                 <EditText
                     android:id="@+id/TURN_RIGHT_FORWARD"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></EditText>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor"></EditText>
 
             </LinearLayout>
         </LinearLayout>
@@ -162,19 +181,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="左后">
+                    android:text="左后"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:id="@+id/TURN_LEFT_BACK"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
 
@@ -184,17 +206,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="右后" />
+                    android:text="右后"
+                    android:textColor="@color/settingColor"/>
 
                 <EditText
                     android:id="@+id/TURN_RIGHT_BACK"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></EditText>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor"></EditText>
 
             </LinearLayout>
         </LinearLayout>
@@ -207,19 +232,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="左旋转">
+                    android:text="左旋转"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:id="@+id/LEFT_ROTATION"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
 
@@ -229,17 +257,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="右旋转" />
+                    android:text="右旋转"
+                    android:textColor="@color/settingColor"/>
 
                 <EditText
                     android:id="@+id/RIGHT_ROTATION"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></EditText>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/settingColor"></EditText>
 
             </LinearLayout>
         </LinearLayout>
@@ -251,38 +282,44 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="停止">
+                    android:text="停止"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/STOP">
+                    android:id="@+id/STOP"
+                    android:textColor="@color/settingColor">
                 </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="控制端口">
+                    android:text="控制端口"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/CONTROLLER_PORT">
+                    android:id="@+id/CONTROLLER_PORT"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
             </LinearLayout>
@@ -295,20 +332,22 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1
-    ">
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="控制地址">
+                    android:text="控制地址"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/IP">
+                    android:id="@+id/IP"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
             </LinearLayout>
@@ -317,14 +356,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="开启触控云台"
                     android:button="@null"
                     android:background="@android:color/transparent"
-                    android:drawableRight="@android:drawable/btn_radio">
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:textColor="@color/settingColor">
                 </CheckBox>
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -332,7 +373,8 @@
                     android:text="云台竖直反转"
                     android:button="@null"
                     android:background="@android:color/transparent"
-                    android:drawableRight="@android:drawable/btn_radio">
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:textColor="@color/settingColor">
                 </CheckBox>
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -340,7 +382,8 @@
                     android:text="云台水平反转"
                     android:button="@null"
                     android:background="@android:color/transparent"
-                    android:drawableRight="@android:drawable/btn_radio">
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:textColor="@color/settingColor">
                 </CheckBox>
         </LinearLayout>
         <LinearLayout
@@ -350,37 +393,43 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="视频地址1">
+                    android:text="视频地址1"
+                    android:textColor="@color/settingColor">
                 </TextView>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/MEDIAADDRESS">
+                    android:id="@+id/MEDIAADDRESS"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="视频地址2">
+                    android:text="视频地址2"
+                    android:textColor="@color/settingColor">
 
                 </TextView>
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/MEDIAADDRESS2">
+                    android:id="@+id/MEDIAADDRESS2"
+                    android:textColor="@color/settingColor">
 
                 </EditText>
             </LinearLayout>
@@ -394,7 +443,9 @@
                     android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="取消">
+                    android:text="取消"
+                    android:background="@drawable/button"
+                    android:textColor="@color/settingColor">
 
                 </Button>
 
@@ -402,7 +453,9 @@
                     android:id="@+id/btnSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="保存"/>
+                    android:text="保存"
+                    android:background="@drawable/button"
+                    android:textColor="@color/settingColor"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

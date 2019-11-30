@@ -125,7 +125,13 @@ public class ControllerActivity extends AppCompatActivity {
         rightNumberPicker = findViewById(R.id.RightSpeedControl);
     }
 
-
+    /**
+     * @Description 卫星菜单及点击事件
+     * @Auther 孙建旺
+     * @Date 下午 7:42 2019/11/30
+     * @Param []
+     * @return void
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void SetCircularFloatingActionMenu(){
         FrameLayout.LayoutParams Itemsize = new FrameLayout.LayoutParams(115,115);
@@ -164,6 +170,7 @@ public class ControllerActivity extends AppCompatActivity {
                 if(item1.getDrawable().getConstantState().equals(getDrawable(R.drawable.suoding).getConstantState())){
                     item1.setImageDrawable(getResources().getDrawable(R.drawable.suodinghou,null));
                     //send
+                    sendUitl.sendInstruction(SendUitl.LOCK_THE_STEERING_ANGLE);
                 }else
                     item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
                 item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
@@ -176,7 +183,8 @@ public class ControllerActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sendUitl.sendInstruction(SendUitl.INITIALIZE_THE_STEERING_ANGLE);
+                item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
             }
         });
 
@@ -186,6 +194,7 @@ public class ControllerActivity extends AppCompatActivity {
                 if(item3.getDrawable().getConstantState().equals(getDrawable(R.drawable.gensui).getConstantState())) {
                     item3.setImageDrawable(getResources().getDrawable(R.drawable.gensuihou, null));
                     //send
+                    sendUitl.sendInstruction(SendUitl.AUTOMATIC_FOLLOW_MASTER_MODE);
                 }else
                     item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
@@ -201,6 +210,7 @@ public class ControllerActivity extends AppCompatActivity {
                 if(item4.getDrawable().getConstantState().equals(getDrawable(R.drawable.xunhang).getConstantState())) {
                     item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhanghou, null));
                     //send
+                    sendUitl.sendInstruction(SendUitl.PATROL_TRACKING_MODE);
                 }else
                     item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
@@ -216,6 +226,7 @@ public class ControllerActivity extends AppCompatActivity {
                 if(item5.getDrawable().getConstantState().equals(getDrawable(R.drawable.hongwai).getConstantState())) {
                     item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwaihou, null));
                     //send
+                    sendUitl.sendInstruction(SendUitl.INFRARED_OBSTACLE_AVOIDANCE_MODE);
                 }else
                     item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
@@ -231,6 +242,7 @@ public class ControllerActivity extends AppCompatActivity {
                 if(item6.getDrawable().getConstantState().equals(getDrawable(R.drawable.chaoshengbo).getConstantState())) {
                     item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbohou, null));
                     //send
+                    sendUitl.sendInstruction(SendUitl.ULTRASONIC_OBSTACLE_AVOIDANCE_MODE);
                 }else
                     item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
