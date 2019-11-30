@@ -9,16 +9,20 @@
         <WebView android:layout_width="match_parent"
                  android:id="@+id/video"
                  android:layout_height="match_parent"/>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent">
-            <RelativeLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -29,56 +33,130 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="左"
-                            android:textColor="@color/colorPrimaryDark">
-                        </TextView>
+                            android:textColor="@color/colorPrimaryDark"></TextView>
 
                         <TextView
-                            android:layout_marginLeft="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
                             android:text="右"
-                            android:textColor="@color/colorPrimaryDark"/>
+                            android:textColor="@color/colorPrimaryDark" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:id="@+id/NumberPickerBox"
                         android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/NumberPickerBox">
+                        android:layout_height="wrap_content">
 
                         <NumberPicker
+                            android:id="@+id/LeftSpeedControl"
                             android:layout_width="20dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/LeftSpeedControl"/>
+                            android:layout_height="wrap_content" />
 
                         <NumberPicker
-                            android:layout_marginLeft="10dp"
+                            android:id="@+id/RightSpeedControl"
                             android:layout_width="20dp"
                             android:layout_height="wrap_content"
-                            android:id="@+id/RightSpeedControl"/>
+                            android:layout_marginLeft="10dp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/BTN_TURN_LEFT_BACK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="左后转">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/BTN_TURN_LEFT_FORWARD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="左前转">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/BTN_LEFT_ROTATION"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="左旋转">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/BTN_RIGHT_ROTATION"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="右旋转"></Button>
+
+                    <Button
+                        android:id="@+id/BTN_TURN_RIGHT_FORWARD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="右前转">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/BTN_TURN_RIGHT_BACK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="右后转">
+
+                    </Button>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"></LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentLeft="true"
                     android:layout_marginBottom="30dp"
-                    android:layout_height="wrap_content">
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                            <ImageView
+                        <ImageView
                             android:id="@+id/BTN_GO_AHEAD"
                             android:layout_width="80dp"
                             android:layout_height="50dp"
-                            android:text="前进"
-                                android:src="@mipmap/forward">
-                            </ImageView>
+                            android:src="@mipmap/forward"
+                            android:text="前进"></ImageView>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -95,14 +173,13 @@
                             </ImageView>
 
                             <ImageView
+                                android:id="@+id/BTN_STOP"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
-                                android:text="停止"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:id="@+id/BTN_STOP"
-                                android:src="@mipmap/stop">
-                            </ImageView>
+                                android:src="@mipmap/stop"
+                                android:text="停止"></ImageView>
 
                             <ImageView
                                 android:id="@+id/BTN_TURN_RIGHT"
@@ -115,90 +192,17 @@
                         </LinearLayout>
 
                         <ImageView
+                            android:id="@+id/BTN_GO_BACK"
                             android:layout_width="80dp"
                             android:layout_height="50dp"
-                            android:text="后退"
-                            android:id="@+id/BTN_GO_BACK"
-                            android:src="@mipmap/back">
+                            android:src="@mipmap/back"
+                            android:text="后退">
 
                         </ImageView>
                     </LinearLayout>
 
                 </RelativeLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="左后转"
-                        android:id="@+id/BTN_TURN_LEFT_BACK"
-                        android:background="@drawable/button">
-
-                    </Button>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="左前转"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/BTN_TURN_LEFT_FORWARD"
-                        android:background="@drawable/button">
-
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="左旋转"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/BTN_LEFT_ROTATION"
-                        android:background="@drawable/button">
-
-                    </Button>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="右旋转"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/BTN_RIGHT_ROTATION"
-                        android:background="@drawable/button">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="右前转"
-                        android:layout_marginBottom="10dp"
-                        android:id="@+id/BTN_TURN_RIGHT_FORWARD"
-                        android:background="@drawable/button">
-
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="右后转"
-                        android:id="@+id/BTN_TURN_RIGHT_BACK"
-                        android:background="@drawable/button">
-
-                    </Button>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center">
-                </LinearLayout>
             </RelativeLayout>
-
         </LinearLayout>
     </FrameLayout>
 

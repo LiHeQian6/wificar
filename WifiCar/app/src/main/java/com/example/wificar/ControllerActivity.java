@@ -7,6 +7,7 @@ package com.example.wificar;
 BY 电子信息教研室·智能运动与行为控制项目组 V1.0版本
 */
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -18,10 +19,16 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.NumberPicker;
 
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ControllerActivity extends AppCompatActivity {
@@ -44,6 +51,7 @@ public class ControllerActivity extends AppCompatActivity {
     private NumberPicker numberPicker;
     private NumberPicker rightNumberPicker;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +71,7 @@ public class ControllerActivity extends AppCompatActivity {
         registerListner();
         setStatusBar();
         SetNumberPicker();
+        SetCircularFloatingActionMenu();
     }
 
     /**
@@ -114,6 +123,135 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_LEFT_ROTATION = findViewById(R.id.BTN_LEFT_ROTATION);
         numberPicker = findViewById(R.id.LeftSpeedControl);
         rightNumberPicker = findViewById(R.id.RightSpeedControl);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void SetCircularFloatingActionMenu(){
+        FrameLayout.LayoutParams Itemsize = new FrameLayout.LayoutParams(115,115);
+        ImageView menu = new ImageView(this);
+        menu.setImageDrawable(getResources().getDrawable(R.drawable.menu,null));
+        FloatingActionButton menuButton = new FloatingActionButton.Builder(this).setContentView(menu).build();
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
+
+        final ImageView item1 = new ImageView(this);
+        item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+        SubActionButton button1 = itemBuilder.setContentView(item1).setLayoutParams(Itemsize).build();
+
+        final ImageView item2 = new ImageView(this);
+        item2.setImageDrawable(getResources().getDrawable(R.drawable.reset,null));
+        SubActionButton button2 = itemBuilder.setContentView(item2).setLayoutParams(Itemsize).build();
+
+        final ImageView item3 = new ImageView(this);
+        item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+        SubActionButton button3 = itemBuilder.setContentView(item3).setLayoutParams(Itemsize).build();
+
+        final ImageView item4 = new ImageView(this);
+        item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+        SubActionButton button4 = itemBuilder.setContentView(item4).setLayoutParams(Itemsize).build();
+
+        final ImageView item5 = new ImageView(this);
+        item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+        SubActionButton button5 = itemBuilder.setContentView(item5).setLayoutParams(Itemsize).build();
+
+        final ImageView item6 = new ImageView(this);
+        item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+        SubActionButton button6 = itemBuilder.setContentView(item6).setLayoutParams(Itemsize).build();
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item1.getDrawable().getConstantState().equals(getDrawable(R.drawable.suoding).getConstantState())){
+                    item1.setImageDrawable(getResources().getDrawable(R.drawable.suodinghou,null));
+                    //send
+                }else
+                    item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+                item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item3.getDrawable().getConstantState().equals(getDrawable(R.drawable.gensui).getConstantState())) {
+                    item3.setImageDrawable(getResources().getDrawable(R.drawable.gensuihou, null));
+                    //send
+                }else
+                    item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+                item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item4.getDrawable().getConstantState().equals(getDrawable(R.drawable.xunhang).getConstantState())) {
+                    item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhanghou, null));
+                    //send
+                }else
+                    item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+                item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item5.getDrawable().getConstantState().equals(getDrawable(R.drawable.hongwai).getConstantState())) {
+                    item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwaihou, null));
+                    //send
+                }else
+                    item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+                item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item6.getDrawable().getConstantState().equals(getDrawable(R.drawable.chaoshengbo).getConstantState())) {
+                    item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbohou, null));
+                    //send
+                }else
+                    item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+                item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+            }
+        });
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(button1)
+                .addSubActionView(button2)
+                .addSubActionView(button3)
+                .addSubActionView(button4)
+                .addSubActionView(button5)
+                .addSubActionView(button6)
+                .setStartAngle(190)
+                .setEndAngle(350)
+                .setRadius(240)
+                .attachTo(menuButton).build();
+        menuButton.setPosition(5,new FrameLayout.LayoutParams(200,200));
+
     }
 
     /**
