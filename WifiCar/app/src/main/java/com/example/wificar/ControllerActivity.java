@@ -295,31 +295,31 @@ public class ControllerActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             switch (v.getId()){
                 case R.id.BTN_GO_AHEAD:
-                    if(event.getAction()==MotionEvent.ACTION_DOWN)
+                    if(event.getAction()==MotionEvent.ACTION_DOWN || event.getAction()==MotionEvent.ACTION_MOVE)
                         BTN_GO_HEAD.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.forward_red));
                     else
                         BTN_GO_HEAD.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.forward));
                     break;
                 case R.id.BTN_GO_BACK:
-                    if(event.getAction()==MotionEvent.ACTION_DOWN)
+                    if(event.getAction()==MotionEvent.ACTION_DOWN || event.getAction()==MotionEvent.ACTION_MOVE)
                         BTN_GO_BACK.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.back_red));
                     else
                         BTN_GO_BACK.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.back));
                     break;
                 case R.id.BTN_TURN_LEFT:
-                    if(event.getAction()==MotionEvent.ACTION_DOWN)
+                    if(event.getAction()==MotionEvent.ACTION_DOWN || event.getAction()==MotionEvent.ACTION_MOVE)
                         BTN_TURN_LEFT.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.left_red));
                     else
                         BTN_TURN_LEFT.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.left));
                     break;
                 case R.id.BTN_TURN_RIGHT:
-                    if(event.getAction()==MotionEvent.ACTION_DOWN)
+                    if(event.getAction()==MotionEvent.ACTION_DOWN || event.getAction()==MotionEvent.ACTION_MOVE)
                         BTN_TURN_RIGHT.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.red_right));
                     else
                         BTN_TURN_RIGHT.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.right));
                     break;
                 case R.id.BTN_STOP:
-                    if(event.getAction()==MotionEvent.ACTION_DOWN)
+                    if(event.getAction()==MotionEvent.ACTION_DOWN || event.getAction()==MotionEvent.ACTION_MOVE)
                         BTN_STOP.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.stop_gray));
                     else
                         BTN_STOP.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.stop));
