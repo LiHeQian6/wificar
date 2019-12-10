@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.NumberPicker;
 
+import com.kongqw.rockerlibrary.view.RockerView;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -57,6 +59,17 @@ public class ControllerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
         video=findViewById(R.id.video);
+        sendUitl = new SendUitl(ControllerActivity.this);
+        videoError();
+        rocker();
+        getViews();
+        registerListner();
+        setStatusBar();
+        SetNumberPicker();
+        SetCircularFloatingActionMenu();
+    }
+
+    private void videoError() {
         video.loadUrl(SendUitl.VIDEO_PATH);
         video.setWebViewClient(new WebViewClient() {
             @Override
@@ -64,15 +77,66 @@ public class ControllerActivity extends AppCompatActivity {
                 super.onReceivedError(view, errorCode, description, failingUrl);
                 Toast.makeText(getApplicationContext(),"连接失败！",Toast.LENGTH_SHORT).show();
                 view.loadUrl("about:blank");
+                sendUitl = new SendUitl(ControllerActivity.this);
             }
         });
-        sendUitl = new SendUitl(ControllerActivity.this);
-        getViews();
-        registerListner();
-        setStatusBar();
-        SetNumberPicker();
-        SetCircularFloatingActionMenu();
     }
+
+    /**
+     * @Description 摇杆监听
+     * @Auther li
+     * @Date 下午 6:39 2019/11/03
+     * @Param []
+     * @return void
+     */
+    private void rocker() {
+        RockerView rockerView =findViewById(R.id.rockerView);
+        rockerView.setCallBackMode(RockerView.CallBackMode.CALL_BACK_MODE_STATE_CHANGE);
+        // 监听摇动方向
+        rockerView.setOnShakeListener(RockerView.DirectionMode.DIRECTION_8, new RockerView.OnShakeListener() {
+            @Override
+            public void onStart() {
+            }
+
+            @Override
+            public void direction(RockerView.Direction direction) {
+                switch (direction){
+                    case DIRECTION_CENTER :
+                        sendUitl.sendInstruction(SendUitl.STOP);
+                        break;
+                    case DIRECTION_UP:
+                        sendUitl.sendInstruction(SendUitl.GO_AHEAD);
+                        break;
+                    case DIRECTION_DOWN:
+                        sendUitl.sendInstruction(SendUitl.GO_BACK);
+                        break;
+                    case DIRECTION_LEFT:
+                        sendUitl.sendInstruction(SendUitl.TURN_LEFT);
+                        break;
+                    case DIRECTION_RIGHT:
+                        sendUitl.sendInstruction(SendUitl.TURN_RIGHT);
+                        break;
+                    case DIRECTION_UP_LEFT:
+                        sendUitl.sendInstruction(SendUitl.TURN_LEFT_FORWARD);
+                        break;
+                    case DIRECTION_UP_RIGHT:
+                        sendUitl.sendInstruction(SendUitl.TURN_RIGHT_FORWARD);
+                        break;
+                    case DIRECTION_DOWN_RIGHT:
+                        sendUitl.sendInstruction(SendUitl.TURN_RIGHT_BACK);
+                        break;
+                    case DIRECTION_DOWN_LEFT:
+                        sendUitl.sendInstruction(SendUitl.TURN_RIGHT_BACK);
+                        break;
+                }
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        });
+    }
+
 
     /**
      * @Description 注册事件监听器
@@ -401,5 +465,11 @@ public class ControllerActivity extends AppCompatActivity {
             //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//实现状态栏文字颜色为暗色
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sendUitl.closeClient();
     }
 }

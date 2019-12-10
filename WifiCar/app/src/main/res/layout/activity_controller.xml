@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:kongqw="http://schemas.android.com/apk/res-auto"
     tools:context=".ControllerActivity"
     android:gravity="center">
     <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
@@ -136,12 +137,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:gravity="center"></LinearLayout>
-
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,11 +146,19 @@
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:orientation="vertical">
-
+                    <com.kongqw.rockerlibrary.view.RockerView
+                        android:id="@+id/rockerView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        kongqw:areaBackground="#22000000"
+                        kongqw:rockerBackground="#436EEE"
+                        kongqw:rockerRadius="15dp" />
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:orientation="vertical">
 
                         <ImageView
