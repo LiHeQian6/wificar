@@ -114,6 +114,15 @@ public class SendUitl {
         }
     }
 
+    public void closeClient(){
+        try {
+            if (client!=null)
+                client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @Description 初始化指令
      * @Auther 孙建旺

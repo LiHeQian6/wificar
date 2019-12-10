@@ -27,4 +27,5 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
+    compile project(path: ':KqwRockerLibrary')
 }
