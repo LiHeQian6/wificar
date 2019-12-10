@@ -73,6 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="左前转"
+                        android:visibility="invisible"
                         android:layout_marginBottom="10dp"
                         android:id="@+id/BTN_TURN_LEFT_FORWARD"
                         android:background="@drawable/button">
@@ -84,6 +85,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="左后转"
                         android:id="@+id/BTN_TURN_LEFT_BACK"
+                        android:visibility="invisible"
                         android:background="@drawable/button">
 
                     </Button>
@@ -99,40 +101,44 @@
                     </Button>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
                     android:gravity="bottom"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="右前转"
-                        android:layout_marginBottom="10dp"
                         android:id="@+id/BTN_TURN_RIGHT_FORWARD"
-                        android:background="@drawable/button">
-
-                    </Button>
-                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="右后转"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="右前转"
+                        android:visibility="invisible">
+
+                    </Button>
+
+                    <Button
                         android:id="@+id/BTN_TURN_RIGHT_BACK"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/button">
-
-                    </Button>
-                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="右旋转"
                         android:layout_marginBottom="10dp"
-                        android:id="@+id/BTN_RIGHT_ROTATION"
-                        android:background="@drawable/button">
+                        android:background="@drawable/button"
+                        android:text="右后转"
+                        android:visibility="invisible">
+
                     </Button>
+
+                    <Button
+                        android:id="@+id/BTN_RIGHT_ROTATION"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button"
+                        android:text="右旋转"></Button>
 
 
                 </LinearLayout>
@@ -155,6 +161,7 @@
                         kongqw:rockerBackground="#436EEE"
                         kongqw:rockerRadius="15dp" />
                     <LinearLayout
+                        android:id="@+id/fangxiangControl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -210,11 +217,8 @@
 
                         </ImageView>
                     </LinearLayout>
-
                 </RelativeLayout>
             </RelativeLayout>
-
         </LinearLayout>
     </FrameLayout>
-
 </LinearLayout>

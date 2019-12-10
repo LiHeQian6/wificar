@@ -22,6 +22,8 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.NumberPicker;
 
@@ -52,6 +54,8 @@ public class ControllerActivity extends AppCompatActivity {
     private WebView video;
     private NumberPicker numberPicker;
     private NumberPicker rightNumberPicker;
+    private LinearLayout fangxiangControl;
+    private RockerView rockerView;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -60,9 +64,9 @@ public class ControllerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_controller);
         video=findViewById(R.id.video);
         sendUitl = new SendUitl(ControllerActivity.this);
+        getViews();
         videoError();
         rocker();
-        getViews();
         registerListner();
         setStatusBar();
         SetNumberPicker();
@@ -90,7 +94,6 @@ public class ControllerActivity extends AppCompatActivity {
      * @return void
      */
     private void rocker() {
-        RockerView rockerView =findViewById(R.id.rockerView);
         rockerView.setCallBackMode(RockerView.CallBackMode.CALL_BACK_MODE_STATE_CHANGE);
         // 监听摇动方向
         rockerView.setOnShakeListener(RockerView.DirectionMode.DIRECTION_8, new RockerView.OnShakeListener() {
@@ -187,6 +190,8 @@ public class ControllerActivity extends AppCompatActivity {
         BTN_LEFT_ROTATION = findViewById(R.id.BTN_LEFT_ROTATION);
         numberPicker = findViewById(R.id.LeftSpeedControl);
         rightNumberPicker = findViewById(R.id.RightSpeedControl);
+        fangxiangControl = findViewById(R.id.fangxiangControl);
+        rockerView =findViewById(R.id.rockerView);
     }
 
     /**
@@ -227,6 +232,11 @@ public class ControllerActivity extends AppCompatActivity {
         final ImageView item6 = new ImageView(this);
         item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
         SubActionButton button6 = itemBuilder.setContentView(item6).setLayoutParams(Itemsize).build();
+
+        final ImageView item7 = new ImageView(this);
+        item7.setImageDrawable(getResources().getDrawable(R.drawable.yaoganhou,null));
+        SubActionButton button7 = itemBuilder.setContentView(item7).setLayoutParams(Itemsize).build();
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -315,6 +325,29 @@ public class ControllerActivity extends AppCompatActivity {
                 item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
             }
         });
+
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item7.getDrawable().getConstantState().equals(getDrawable(R.drawable.yaoganhou).getConstantState())) {
+                    fangxiangControl.setVisibility(View.VISIBLE);
+                    rockerView.setVisibility(View.INVISIBLE);
+                    BTN_TURN_LEFT_FORWARD.setVisibility(View.VISIBLE);
+                    BTN_TURN_RIGHT_FORWARD.setVisibility(View.VISIBLE);
+                    BTN_TURN_LEFT_BACK.setVisibility(View.VISIBLE);
+                    BTN_TURN_RIGHT_BACK.setVisibility(View.VISIBLE);
+                    item7.setImageDrawable(getResources().getDrawable(R.drawable.yaogan, null));
+                }else{
+                    fangxiangControl.setVisibility(View.INVISIBLE);
+                    rockerView.setVisibility(View.VISIBLE);
+                    BTN_TURN_LEFT_FORWARD.setVisibility(View.INVISIBLE);
+                    BTN_TURN_RIGHT_FORWARD.setVisibility(View.INVISIBLE);
+                    BTN_TURN_LEFT_BACK.setVisibility(View.INVISIBLE);
+                    BTN_TURN_RIGHT_BACK.setVisibility(View.INVISIBLE);
+                    item7.setImageDrawable(getResources().getDrawable(R.drawable.yaoganhou, null));
+                }
+            }
+        });
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(button1)
                 .addSubActionView(button2)
@@ -322,6 +355,7 @@ public class ControllerActivity extends AppCompatActivity {
                 .addSubActionView(button4)
                 .addSubActionView(button5)
                 .addSubActionView(button6)
+                .addSubActionView(button7)
                 .setStartAngle(190)
                 .setEndAngle(350)
                 .setRadius(240)
