@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SettingsActivity"
-    android:background="@drawable/back">
+    android:background="@drawable/carbackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -445,7 +445,7 @@
                     android:layout_height="wrap_content"
                     android:text="取消"
                     android:background="@drawable/button"
-                    android:textColor="@color/settingColor">
+                    android:textColor="#000000">
 
                 </Button>
 
@@ -455,7 +455,7 @@
                     android:layout_height="wrap_content"
                     android:text="保存"
                     android:background="@drawable/button"
-                    android:textColor="@color/settingColor"/>
+                    android:textColor="#000000"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

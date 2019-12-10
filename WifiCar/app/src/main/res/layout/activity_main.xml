@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/carbackground"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".ShowActivity">
 
     <LinearLayout
@@ -12,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnStart"
