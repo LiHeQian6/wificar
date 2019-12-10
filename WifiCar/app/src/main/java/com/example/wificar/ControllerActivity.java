@@ -245,8 +245,9 @@ public class ControllerActivity extends AppCompatActivity {
                     item1.setImageDrawable(getResources().getDrawable(R.drawable.suodinghou,null));
                     //send
                     sendUitl.sendInstruction(SendUitl.LOCK_THE_STEERING_ANGLE);
-                }else
-                    item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
+                }else {
+                    item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding, null));
+                }
                 item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
                 item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
                 item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
@@ -269,8 +270,10 @@ public class ControllerActivity extends AppCompatActivity {
                     item3.setImageDrawable(getResources().getDrawable(R.drawable.gensuihou, null));
                     //send
                     sendUitl.sendInstruction(SendUitl.AUTOMATIC_FOLLOW_MASTER_MODE);
-                }else
-                    item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
+                }else {
+                    sendUitl.sendInstruction(SendUitl.MANUAL_MODE);
+                    item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui, null));
+                }
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
                 item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
                 item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
@@ -285,8 +288,10 @@ public class ControllerActivity extends AppCompatActivity {
                     item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhanghou, null));
                     //send
                     sendUitl.sendInstruction(SendUitl.PATROL_TRACKING_MODE);
-                }else
-                    item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
+                }else {
+                    sendUitl.sendInstruction(SendUitl.MANUAL_MODE);
+                    item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang, null));
+                }
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
                 item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
                 item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
@@ -301,8 +306,10 @@ public class ControllerActivity extends AppCompatActivity {
                     item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwaihou, null));
                     //send
                     sendUitl.sendInstruction(SendUitl.INFRARED_OBSTACLE_AVOIDANCE_MODE);
-                }else
-                    item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai,null));
+                }else {
+                    sendUitl.sendInstruction(SendUitl.MANUAL_MODE);
+                    item5.setImageDrawable(getResources().getDrawable(R.drawable.hongwai, null));
+                }
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
                 item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
                 item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
@@ -317,8 +324,10 @@ public class ControllerActivity extends AppCompatActivity {
                     item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbohou, null));
                     //send
                     sendUitl.sendInstruction(SendUitl.ULTRASONIC_OBSTACLE_AVOIDANCE_MODE);
-                }else
-                    item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo,null));
+                }else {
+                    sendUitl.sendInstruction(SendUitl.MANUAL_MODE);
+                    item6.setImageDrawable(getResources().getDrawable(R.drawable.chaoshengbo, null));
+                }
                 item1.setImageDrawable(getResources().getDrawable(R.drawable.suoding,null));
                 item3.setImageDrawable(getResources().getDrawable(R.drawable.gensui,null));
                 item4.setImageDrawable(getResources().getDrawable(R.drawable.xunhang,null));
