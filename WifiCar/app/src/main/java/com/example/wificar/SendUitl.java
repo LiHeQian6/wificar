@@ -50,8 +50,10 @@ public class SendUitl {
     public static byte[] PATROL_TRACKING_MODE = new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x02, (byte) 0x00, (byte) 0xFF};
     public static byte[] INFRARED_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     public static byte[] ULTRASONIC_OBSTACLE_AVOIDANCE_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x04, (byte) 0x00, (byte) 0xFF};
+    public static byte[] MANUAL_MODE= new byte[]{(byte) 0xFF, (byte) 0x13, (byte) 0x05, (byte) 0x00, (byte) 0xFF};
     public static byte[] LEFT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
     public static byte[] RIGHT_SPEED_GEAR= new byte[]{(byte) 0xFF, (byte) 0x02, (byte) 0x03, (byte) 0x00, (byte) 0xFF};
+
     //默认IP
     public static String IP = "192.168.100.1";
     //默认端口
